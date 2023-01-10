@@ -24,8 +24,9 @@ urlpatterns = [
     path('', include('food.urls')),
     path('account/', include('account.urls')),
     path('api/v1/', include('rest_api.urls')),
-    path('api/auth/', include('djoser.urls.authtoken')),
+    path('api/auth/token', include('djoser.urls.authtoken')),
     path('api/auth/register/', include('djoser.urls')),
+    path('api/auth/', include('users.urls'))
 
 ]
 
