@@ -17,14 +17,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from . import yasg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('food.urls')),
     path('account/', include('account.urls')),
-    path('api/v1/', include('rest_api.urls'))
+    path('api/v1/', include('rest_api.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
+    path('api/auth/register/', include('djoser.urls')),
 
 ]
 
+urlpatterns += yasg.urlpatterns
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
